@@ -4,9 +4,9 @@ import { ButtonStyle } from "./styles";
 
 type ButtonProps = {
   children: ReactNode;
-  event?: any;
+  handleUpdateContent?: () => void;
 };
 
-export const Button = ({ children, event }: ButtonProps) => {
-  return <ButtonStyle onClick={event}>{children}</ButtonStyle>;
+export const Button = ({ children, handleUpdateContent }: ButtonProps) => {
+  return <ButtonStyle onClick={handleUpdateContent}>{children}</ButtonStyle>;
 };

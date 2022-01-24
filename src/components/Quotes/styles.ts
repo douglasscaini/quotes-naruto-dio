@@ -13,6 +13,6 @@ export const Quote = styled.p`
 `;
 
 export const Speaker = styled(Quote)`
-  text-align: right;
+  align-self: end;
   margin-bottom: 50px;
 `;

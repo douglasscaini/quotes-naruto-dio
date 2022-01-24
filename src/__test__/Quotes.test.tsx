@@ -2,13 +2,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Quotes } from "../components/Quotes";
 
 const quote = "test quote";
-const speaker = "random speaker";
+const character = "test character";
 
 test("renders received quote, speaker and a button", () => {
-  render(<Quotes quote={quote} speaker={speaker} />);
+  render(<Quotes quote={quote} character={character} />);
 
   const quoteElement = screen.getByText(quote);
-  const speakerElement = screen.getByText(`- ${speaker}`);
+  const speakerElement = screen.getByText(`- ${character}`);
   const buttonElement = screen.getByRole("button");
 
   expect(quoteElement).toBeInTheDocument();
@@ -19,7 +19,7 @@ test("renders received quote, speaker and a button", () => {
 test("calls a callback when button is pressed", () => {
   const callback = jest.fn();
 
-  render(<Quotes quote={quote} speaker={speaker} onUpdate={callback} />);
+  render(<Quotes quote={quote} character={character} handleUpdateContent={callback} />);
 
   const buttonElement = screen.getByRole("button");
 

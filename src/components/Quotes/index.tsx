@@ -4,18 +4,18 @@ import { Quote, Speaker, Wrapper } from "./styles";
 
 type QuotesProps = {
   quote: string;
-  speaker: string;
-  onUpdate?: () => void;
+  character: string;
+  handleUpdateContent?: () => void;
 };
 
-export const Quotes = ({ quote, speaker, onUpdate }: QuotesProps) => {
+export const Quotes = ({ quote, character, handleUpdateContent }: QuotesProps) => {
   return (
     <Wrapper>
       <Quote>{quote}</Quote>
 
-      <Speaker>- {speaker}</Speaker>
+      <Speaker>- {character}</Speaker>
 
-      <Button event={onUpdate}>Quote No Jutsu</Button>
+      <Button handleUpdateContent={handleUpdateContent}>Quote No Jutsu</Button>
     </Wrapper>
   );
 };
