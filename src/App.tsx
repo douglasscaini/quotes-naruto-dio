@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 import { Quotes } from "./components/Quotes";
@@ -13,9 +13,11 @@ type QuoteProps = {
 };
 
 export default function App() {
+  const isMounted = useRef(true);
+
   const [quote, setQuote] = useState<QuoteProps>({
-    quote: "test quote",
-    character: "test character",
+    quote: "loading quote...",
+    character: "loading character...",
   });
 
   const handleUpdateContent = async () => {
@@ -28,8 +30,18 @@ export default function App() {
       };
     });
 
-    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    if (isMounted.current) {
+      setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    }
   };
+
+  useEffect(() => {
+    handleUpdateContent();
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   return (
     <Content>
